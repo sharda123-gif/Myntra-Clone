@@ -57,6 +57,7 @@ jobs:
         run: docker pull rasota352/myntra:latest
 
       - name: Deploy to container
+        run: docker rm -f game || true
         run: docker run -d --name game -p 3000:3000 rasota352/myntra:latest
 
       - name: Update kubeconfig

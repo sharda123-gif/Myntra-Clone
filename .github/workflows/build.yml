@@ -29,12 +29,12 @@ jobs:
       - name: Install Docker Scout
         run: |
           curl -fsSL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh
-          sudo mv docker-scout /usr/local/bin/
+          echo "Docker Scout installed at $(realpath ~/.docker/cli-plugins/docker-scout)"
 
       - name: Docker Scout Scan
         run: |
-          docker-scout quickview fs://.
-          docker-scout cves fs://.
+          ~/.docker/cli-plugins/docker-scout quickview fs://.
+          ~/.docker/cli-plugins/docker-scout cves fs://.
 
       - name: Docker Build and Push
         run: |
@@ -46,5 +46,5 @@ jobs:
 
       - name: Docker Scout Image Scan
         run: |
-          docker-scout quickview rasota352/myntra:latest
-          docker-scout cves rasota352/myntra:latest
+          ~/.docker/cli-plugins/docker-scout quickview rasota352/myntra:latest
+          ~/.docker/cli-plugins/docker-scout cves rasota352/myntra:latest
